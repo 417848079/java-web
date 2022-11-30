@@ -12,5 +12,11 @@ CREATE TABLE stu2 (
 
 
 -- 添加数据
-INSERT INTO sty2(id,NAME,age,sex,address,math,english,)
+INSERT INTO sty2(id,NAME,age,sex,address,math,english,hire_date) VALUES
+(1,'马云',55,'男','杭州',66,78,'1998-01-01')
+(2,'马化腾',45,'女','深圳',98,99,'1999-09-01')
+(3,'马斯克',55,'男','香港',56,77,'2000-01-01')
+(4,'留白',33,'女','广东',62,75,'2008-01-01')
+(5,'柳青',20,'女','云南',66,78,'1998-01-01')
+
 
