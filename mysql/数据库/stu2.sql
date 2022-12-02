@@ -1,0 +1,11 @@
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (1, '马云', 55, '男', '杭州', 66.00, 78.00, '1998-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (2, '马化腾', 45, '女', '深圳', 98.00, 99.00, '1999-09-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (3, '马斯克', 55, '男', '香港', 56.00, 77.00, '2000-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (4, '留白', 18, '女', '广东', 62.00, 75.00, '2008-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (5, '柳青', 16, '女', '云南', 66.00, NULL, '1998-08-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (6, '刘德华', 57, '男', '香港', 98.00, 93.00, '1999-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (7, '张学友', 60, '男', '台湾', 90.00, 100.00, '2000-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (8, '小马', 22, '女', '新疆', 100.00, 99.00, '2000-01-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (9, '孟浩然', 20, '男', '湖南', 99.00, 93.00, '2010-01-29');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (10, '林秒可', 20, '女', '北京', 90.00, 95.00, '2010-10-01');
+INSERT INTO `stu2` (`id`, `name`, `age`, `sex`, `address`, `math`, `english`, `hire_date`) VALUES (11, '德玛西亚', 30, '男', '上海', 98.00, 88.00, '2011-10-19');
