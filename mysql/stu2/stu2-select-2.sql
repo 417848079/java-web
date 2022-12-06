@@ -140,3 +140,8 @@ SELECT AVG(math) FROM stu2;
 
 -- 6.查询英语成绩的最低分
 SELECT MIN(english) FROM stu2;
+
+
+
+
+-- 分组查询=======================================
