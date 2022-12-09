@@ -1,3 +1,5 @@
+-- DQL
+
 -- 基础查询  ==========
 
 USE study;
@@ -119,7 +121,6 @@ SELECT COUNT(english) FROM stu2;
 SELECT COUNT(*) FROM stu2;
 
 
-
 -- 2.查询数学成绩的最高分
 
 SELECT MAX(math) FROM stu2;
@@ -145,3 +146,41 @@ SELECT MIN(english) FROM stu2;
 
 
 -- 分组查询=======================================
+
+-- 1. 查询男同学和女同学各自的数学平均分
+
+SELECT sex, AVG(math) FROM stu2 GROUP BY sex;
+
+-- 2. 查询男同学和女同学各自的平均分，以及各自的人数
+
+SELECT sex,AVG(math),COUNT(*) FROM stu2 GROUP BY sex;
+
+-- 3. 查询男同学和女同学各自的平均分，以及各自的人数，分数低于70分的不参与分组;
+
+SELECT sex,AVG(math),COUNT(*) FROM stu2 WHERE math > 70 GROUP BY sex;
+
+-- 4. 查询男同学和女同学各自的平均分，以及各自的人数，分数低于70分的不参与分组 分组之后人数要大于4个;
+
+SELECT sex,AVG(math),COUNT(*) FROM stu2 WHERE math > 70 GROUP BY sex HAVING COUNT(*) > 4;
+
+
+
+-- 分页查询==============================================
+SELECT * FROM stu2;
+-- 1.从0开始查，查询三条数据
+
+SELECT * FROM stu2 LIMIT 0,3;
+
+-- 2.每页显示3条数据，查询第一页数据；
+
+SELECT * FROM stu2 LIMIT 0,3;
+
+-- 3.每页显示三条数据,查询第二页数据；
+
+SELECT * FROM stu2 LIMIT 3,3;
+
+-- 4.每页显示3条数据，查询第三页数据
+
+SELECT * FROM stu2 LIMIT 6,3;
+
+-- 起始索引 = （当前页码-1）*每页显示的条数
