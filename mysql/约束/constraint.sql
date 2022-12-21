@@ -45,6 +45,60 @@ INSERT INTO emp(id,ename,joindate,salary,bonus) VALUES(NULL,'赵六2','1999-11-1
 
 
 
-
-
 SELECT * FROM emp;
+
+
+
+
+
+
+-- 外键约束=======================
+DROP TABLE IF EXISTS emp1;
+DROP TABLE IF EXISTS dept;
+
+-- 部门表
+CREATE TABLE dept(
+	id INT PRIMARY KEY auto_increment,
+	dep_name VARCHAR(20),
+	address VARCHAR(20)
+);
+
+-- 员工表
+CREATE TABLE emp1(
+id int PRIMARY KEY auto_increment,
+name VARCHAR(20),
+age INT,
+dep_id INT,
+
+ -- 添加外键 dep_id,关联dept表的id主键
+CONSTRAINT fk_emp1_dept FOREIGN KEY(dep_id) REFERENCES dept(id)
+ 
+);
+
+-- 添加部门
+
+INSERT into dept(dep_name,address) VALUES ('研发部','广州'),('销售部','深圳');
+
+
+-- 添加员工,dep_id 表示员工所在的部门
+
+INSERT into emp1(name,age,dep_id) VALUES
+ ('张三',20,1),
+ ('李四',20,1),
+ ('王五',20,1),
+ ('赵六',20,2),
+ ('孙柒',18,2),
+ ('周八',22,2);
+ 
+ -- 删除外键
+ alter TABLE emp1 DROP FOREIGN KEY fk_emp1_dept;
+ 
+ -- 添加外键
+ ALTER TABLE emp1 ADD CONSISTENT fk_emp1_dept FOREIGN key(dep_id) REFERENCES dept(id);
+ 
+ 
+ 
+ SELECT * FROM emp1;
+ 
+ SELECT * FROM dept;
+
