@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--        namespace:名称空间-->
+<mapper namespace="com.xxq.mapper.BrandMapper">
+    <!--
+        数据库表的字段 和 实体类的属性名称 不一样，则不能自动封装数据
+        *起别名：对不一样的列名起别名
+        *sql片段
+        *resultType
+    -->
+
+
+    <!--
+        id:唯一标识
+        type:映射的类型，支持别名
+    -->
+    <resultMap id="brandResultMap" type="brand">
+        <result column="brand_name" property="brandName"/>
+        <result column="company_name" property="companyName"/>
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="brandResultMap">
+        select *
+        from tb_brand;
+    </select>
+
+
+    <!--
+    参数占位符：
+    1.#{} 会将其替换为 ? 为了防止sql注入
+    2.${} 拼sql 会存在sql注入问题
+    3.使用时机
+        *参数传递的时候：#{}
+        *表名或者列名不固定的时候：${}
+
+      *参数类型：parameterType可以省略
+      *特殊字符处理：
+      1.转义字符：
+      2.CDATA区：
+      <符号  &lt; 或者  <![CDATA[
+        <
+        ]]>
+    -->
+    <select id="selectById" parameterType="int" resultMap="brandResultMap">
+        select *
+        from tb_brand
+        where id = #{id}
+    </select>
+
+    <!--    <sql id="brand_column">id-->
+    <!--    ,brand_name as brandName, company_name as companyName , ordered,description,status</sql>-->
+    <!--    <select id="selectAll" resultType="com.xxq.pojo.Brand">-->
+    <!--        select-->
+    <!--        <include refid="brand_column"/>-->
+    <!--        from tb_brand;-->
+    <!--    </select>-->
+
+
+    <!--
+    条件查询
+    -->
+    <!--    <select id="selectByCondition" resultMap="brandResultMap">-->
+    <!--        select *-->
+    <!--        from tb_brand-->
+    <!--        where status = #{status}-->
+    <!--          and company_name like #{companyName}-->
+    <!--          and brand_name like #{brandName}-->
+    <!--    </select>-->
+
+    <!--
+        动态条件查询
+    -->
+    <select id="selectByCondition" resultMap="brandResultMap">
+        select *
+        from tb_brand
+        <where>
+            <if test="status!=null">
+                status = #{status}
+            </if>
+            <if test="companyName!=null and companyName!=''">
+                and company_name like #{companyName}
+            </if>
+            <if test="brandName!=null and brandName!=''">
+                and brand_name like #{brandName}
+            </if>
+        </where>
+    </select>
+
+
+    <!--    <select id="selectByConditionSingle" resultMap="brandResultMap">-->
+    <!--        select * from tb_brand where-->
+    <!--        <choose> &lt;!&ndash;相当于switch&ndash;&gt;-->
+    <!--            <when test="status!=null">-->
+    <!--                status=#{status}-->
+    <!--            </when>&lt;!&ndash;相当于case&ndash;&gt;-->
+    <!--            <when test="companyName!=null and companyName!=''">-->
+    <!--                company_name like #{companyName}-->
+    <!--            </when>-->
+    <!--            <when test="brandName!=null and brandName!=''">-->
+    <!--                brand_name like #{brandName}-->
+    <!--            </when>-->
+    <!--            <otherwise>-->
+    <!--                1=1-->
+    <!--            </otherwise>-->
+    <!--        </choose>-->
+    <!--    </select>-->
+
+
+    <select id="selectByConditionSingle" resultMap="brandResultMap">
+        select * from tb_brand
+        <where>
+            <choose>
+                <when test="status!=null">
+                    status=#{status}
+                </when>
+                <when test="companyName!=null and companyName!=''">
+                    company_name like #{companyName}
+                </when>
+                <when test="brandName!=null and brandName!=''">
+                    brand_name like #{brandName}
+                </when>
+            </choose>
+        </where>
+    </select>
+
+
+    <insert id="add">
+        insert into tb_use(brand_name,company_name,ordered,description,status)
+        values(#{brandName},#{companyName},#{ordered},#{description},,#{status})
+    </insert>
+</mapper>
