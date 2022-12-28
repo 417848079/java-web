@@ -9,5 +9,5 @@
         select *
         from tb_user;
     </select>
-    <select id="selectById" resultType="com.xxq.pojo.User"></select>
+<!--    <select id="selectById" resultType="com.xxq.pojo.User"></select>-->
 </mapper>

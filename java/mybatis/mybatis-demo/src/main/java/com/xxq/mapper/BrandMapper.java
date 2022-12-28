@@ -64,4 +64,25 @@ public interface BrandMapper {
      * @return: void
      */
     void add(Brand brand);
+
+
+    /**
+     * @author: amw
+     * @createTime: 2022年12月26 10:58:48
+     * @description: 修改
+     * @param: brand - [Brand]
+     * @return: void
+     */
+    int update(Brand brand);
+
+    /**
+     * @author: amw
+     * @createTime: 2022年12月26 14:17:30
+     * @description:根据id删除
+     * @param: id - [int]
+     * @return: void
+     */
+    void deleteById(int id);
+
+    void deleteByIds(@Param("ids") int[] ids);
 }
