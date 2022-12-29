@@ -145,8 +145,7 @@ html,body{
     padding: 0 18px;
 }
 .signin-form .form-col{
-    width: 48.5%;
-    float: left;
+    width: 100%;
     
 }
 .signin-form .form-col1{
