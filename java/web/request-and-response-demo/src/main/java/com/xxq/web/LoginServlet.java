@@ -2,6 +2,7 @@ package com.xxq.web;
 
 import com.xxq.mapper.UserMapper;
 import com.xxq.pojo.User;
+import com.xxq.util.SqlSessionFactoryUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -26,9 +27,10 @@ public class LoginServlet extends HttpServlet {
 
         //2.调用mybatis完成查询
         //2.1获取SqlSessionFaction对象
-        String resource = "mybatis-config.xml";
-        InputStream inputStream = Resources.getResourceAsStream(resource);
-        SqlSessionFactory sqlSessionFactory =  new SqlSessionFactoryBuilder().build(inputStream);
+       // String resource = "mybatis-config.xml";
+        //InputStream inputStream = Resources.getResourceAsStream(resource);
+        //SqlSessionFactory sqlSessionFactory =  new SqlSessionFactoryBuilder().build(inputStream);*/
+        SqlSessionFactory sqlSessionFactory = SqlSessionFactoryUtils.getSqlSessionFactory();
 
         //2.2获取SqlSession对象
         SqlSession sqlSession = sqlSessionFactory.openSession();
@@ -37,7 +39,7 @@ public class LoginServlet extends HttpServlet {
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
 
         //2.4调用方法
-        User select = mapper.Select(username, password);
+        User select = mapper.select(username, password);
 
         //2.5 释放资源
         sqlSession.close();

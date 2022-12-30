@@ -16,8 +16,8 @@ public interface UserMapper {
      * @return: com.xxq.pojo.User
      */
     @Select("select * from tb_user where username =#{userName} and password=#{passWord}")
-    User Select(@Param("userName") String userName, @Param("passWord") String passWord);
-
+    User select(@Param("userName") String userName, @Param("passWord") String passWord);
+ 
     /**
      * @author: amw
      * @createTime: 2022年12月29 11:04:12
@@ -26,9 +26,16 @@ public interface UserMapper {
      * @return: com.xxq.pojo.User
      */
     @Select("select * from tb_user where username=#{userName}")
-    User SelectByUserName(String userName);
+    User selectByUserName(String userName);
 
 
-//    @Insert( )
-//    int AddUser(@Param("userName") String userName, @Param("passWord") String passWord);
+    /**
+     * @author: amw
+     * @createTime: 2022年12月30 10:55:38
+     * @description:添加用户
+     * @param: user - [User]
+     * @return: void
+     */
+    @Insert("insert into tb_user values(null,#{username},#{password})")
+    void add(User user);
 }
