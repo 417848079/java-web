@@ -13,7 +13,7 @@
     List<Brand> brands = new ArrayList<Brand>();
     Brand brand = new Brand();
     brands.add(new Brand(1, "三只松鼠", "三只松鼠食品", 100, "好吃的很", 1));
-    brands.add(new Brand(2, "小米", "小米科技", 100, "为发烧", 2));
+    brands.add(new Brand(2, "小米", "小米科技", 100, "为发烧", 0));
     brands.add(new Brand(3, "华为", "华为科技", 1000, "科技巨头", 1));
 %>
 <html>
@@ -40,6 +40,8 @@
 %>
 <br/>
 <div style="margin-top: 30px">
+  <button>新增</button>
+  <hr/>
     <table border="1" cellspacing="0" width="800" >
     <tr align="center">
         <th>id</th>
@@ -62,7 +64,7 @@
     <td><%= brandInfo.getCompanyName()%></td>
     <td><%= brandInfo.getOrdered()%></td>
     <td><%= brandInfo.getDescription()%></td>
-    <td><%= brandInfo.getStatus()%></td>
+    <td><%= brandInfo.getStatus()==1?"启用":"禁用"%></td>
     <td><a href="#">修改</a> <a href="#">删除</a></td>
 </tr>
 <%

@@ -12,9 +12,9 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="jsp-demo" target="7" />
+      <module name="jsp-demo" target="1.7" />
       <module name="request-and-response-demo" target="7" />
-      <module name="request-demo" target="7" />
+      <module name="request-demo" target="1.7" />
       <module name="servlet-demo" target="1.5" />
     </bytecodeTargetLevel>
   </component>
