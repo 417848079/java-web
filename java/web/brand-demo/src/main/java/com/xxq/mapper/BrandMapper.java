@@ -1,5 +1,6 @@
 package com.xxq.mapper;
 import com.xxq.pojo.Brand;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
@@ -43,4 +44,7 @@ public interface BrandMapper {
     @Select("select * from tb_brand where id = #{id}")
     @ResultMap("brandResultMap")
     Brand selectOne(int id);
+
+    @Delete("delete from tb_brand where id = #{}")
+    void deleteById(int id);
 }
