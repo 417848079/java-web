@@ -39,4 +39,34 @@ public class UserService {
         sqlSession.close();
         return select;
     }
+
+
+    /**
+     * @author: amw
+     * @createTime: 2023年01月05 16:58:57
+     * @description: 注册用户
+     * @param: name - [String]
+     * @param: password - [String]
+     * @return: java.lang.Boolean
+     */
+    public Boolean register(User user){
+        //2.获取SqlSession
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        //3.获取UserMapper
+        UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+        //4.注册
+
+        //判断用户名是否存在
+        User user1 = mapper.selectByUserName(user.getUsername());
+        if(user1==null){
+            //用户名不存在,注册
+            mapper.add(user);
+            sqlSession.commit();
+
+        }
+        //5.释放资源
+        sqlSession.close();
+
+        return user1==null;
+    }
 }

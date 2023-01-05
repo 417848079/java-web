@@ -13,6 +13,7 @@
     <title>Title</title>
 </head>
 <body>
+<h1 style="margin-bottom: 50px">${login.username},Welcome!</h1>
 <input type="button" value="新增" id="add" style="margin-bottom: 50px">
 <table border="1" cellspacing="0" width="800">
     <tr align="center">
