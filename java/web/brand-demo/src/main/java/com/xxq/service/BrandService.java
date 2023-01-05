@@ -90,4 +90,24 @@ public class BrandService {
         //5.释放资源
         sqlSession.close();
     }
+
+
+    /**
+     * @author: amw
+     * @createTime: 2023年01月05 09:48:32
+     * @description: 根据id删除
+     * @param: id - [int]
+     * @return: void
+     */
+    public void deleteById(int id){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+
+        mapper.deleteById(id);
+
+        sqlSession.commit();
+
+        sqlSession.close();
+    }
 }

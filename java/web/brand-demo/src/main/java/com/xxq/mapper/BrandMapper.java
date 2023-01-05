@@ -45,6 +45,13 @@ public interface BrandMapper {
     @ResultMap("brandResultMap")
     Brand selectOne(int id);
 
-    @Delete("delete from tb_brand where id = #{}")
+    /**
+     * @author: amw
+     * @createTime: 2023年01月05 09:44:44
+     * @description: 删除
+     * @param: id - [int]
+     * @return: void
+     */
+    @Delete("delete from tb_brand where id = #{id}")
     void deleteById(int id);
 }

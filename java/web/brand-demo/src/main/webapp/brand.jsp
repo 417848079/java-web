@@ -35,7 +35,7 @@
         <td>${brand.ordered}</td>
         <td>${brand.description}</td>
         <td>${brand.status==1?"启用":"禁用"}</td>
-        <td><a href="/brand-demo/oneServlet?id=${brand.id}">修改</a> <a href="#">删除</a></td>
+        <td><a href="/brand-demo/oneServlet?id=${brand.id}">修改</a> <a href="/brand-demo/delete?id=${brand.id}">删除</a></td>
     </tr>
     </c:forEach>
     <table>
