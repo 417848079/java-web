@@ -1,6 +1,7 @@
 package com.xxq.mapper;
 
 import com.xxq.pojo.Brand;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -18,5 +19,6 @@ public interface BrandMapper {
     List<Brand> selectAll();
 
 
+    @Insert("")
     void add();
 }
