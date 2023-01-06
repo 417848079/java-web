@@ -84,8 +84,8 @@
                             <div class="form-group">
                                 <label for="signin_form">code</label>
                                 <div style="display: flex; align-items: center">
-                                <input type="password" name="code" class="form-control" id="signin_form" placeholder="Password" style="width: 20%">
-                                <img src="/brand-demo/checkCodeServlet" style="width: 200px;height: 100%;margin-left: 20px">
+                                <input name="code" class="form-control" id="signin_form" placeholder="Password" style="width: 20%">
+                                <img id="imgCode" name="checkCode" onclick="checkCodeFun()" src="/brand-demo/checkCodeServlet" style="width: 90px;height: 100%;margin-left: 20px">
                                 </div>
                             </div><!--/.form-group -->
                             <div>
@@ -259,6 +259,10 @@
 <script lang="javascript">
     function submitFun(obj){
         obj.submit();
+    }
+    function  checkCodeFun(){
+        let date = Math.round(new Date());
+        document.getElementById("imgCode").src="/brand-demo/checkCodeServlet?"+date;
     }
 </script>
 

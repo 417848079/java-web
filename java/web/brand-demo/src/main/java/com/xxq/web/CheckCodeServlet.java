@@ -1,8 +1,11 @@
 package com.xxq.web;
 
+import com.xxq.util.CheckCodeUtil;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 @WebServlet("/checkCodeServlet")
@@ -10,6 +13,16 @@ public class CheckCodeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
             IOException {
+
+        //生成验证码
+        ServletOutputStream outputStream = response.getOutputStream();
+        String s = CheckCodeUtil.outputVerifyImage(100, 50, outputStream, 4);
+
+        //存入session
+        HttpSession session = request.getSession();
+        session.setAttribute("checkCodeGen",s);
+
+
 
     }
 

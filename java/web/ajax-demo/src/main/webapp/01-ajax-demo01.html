@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="myDiv"></div>
+
+</body>
+<script lang="javascript">
+    //1.创建核心对象
+    var xmlhttp;
+    if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+        xmlhttp = new XMLHttpRequest();
+    } else {// code for IE6, IE5
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    //2.发送请求
+    xmlhttp.open("GET","http://localhost/ajax-demo/ajaxServlet");
+    xmlhttp.send();
+
+    //3.获取响应
+    xmlhttp.onreadystatechange=function()
+    {
+        if (xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+        }
+    }
+
+</script>
+</html>

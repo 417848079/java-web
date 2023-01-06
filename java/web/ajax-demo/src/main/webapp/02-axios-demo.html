@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/axios.min.js"></script>
+<body>
+<div id="myDiv"></div>
+
+</body>
+<script lang="javascript">
+    //1.get
+    axios({
+        method:"get",
+        url:"http://localhost/ajax-demo/axios?username="+"zhangsan",
+    }).then(res=>{
+        alert(res.data)
+    })
+
+</script>
+</html>

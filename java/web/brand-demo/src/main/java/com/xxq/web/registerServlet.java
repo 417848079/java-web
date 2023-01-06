@@ -18,6 +18,24 @@ public class registerServlet extends HttpServlet {
         //1.获取用户名和密码
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
+        //获取用户输入的验证码
+        String checkCode = request.getParameter("code");
+        //获取程序生成的验证码
+        HttpSession session = request.getSession();
+
+        String checkCodeGen = (String) session.getAttribute("checkCodeGen");
+
+        //判断用户输入的验证码是否正确 比对
+        if(!checkCodeGen.equalsIgnoreCase(checkCode)){
+            //不允许注册
+            //注册失败
+            request.setAttribute("register_msg","验证码错误");
+            request.getRequestDispatcher("/register.jsp").forward(request,response);
+            return;
+        }
+
+
+
 
         User user = new User();
         user.setUsername(userName);
