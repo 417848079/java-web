@@ -4,19 +4,48 @@
     <meta charset="UTF-8">
     <title>axios案例</title>
 </head>
+<script src="js\axios.min.js"></script>
 <body>
 
+<input type="button" value="新增" id="add" style="margin-bottom: 50px">
+<table border="1" cellspacing="0" width="800" id="brandTable">
+<table>
+
+
 </body>
-<script>
-    //1.当页面加载完成后，发送ajax请求
-    window.onload=()=>{
+<script lang="javascript">
+    window.onload = function () {
         axios({
-            method:"get",
-            url:""
-        }).then(res=>{
-            
+            method: "get",
+            url: "http://localhost/brand-axios-demo/selectAllServlet",
+        }).then(res => {
+            let tableData = "<tr align=\"center\">\n" +
+                "        <th>id</th>\n" +
+                "        <th>品牌名称</th>\n" +
+                "        <th>公司名称</th>\n" +
+                "        <th>排序</th>\n" +
+                "        <th>描述</th>\n" +
+                "        <th>状态</th>\n" +
+                "        <th>操作</th>\n" +
+                "    </tr>"
+            for (let i = 0; i < res.data.length; i++) {
+                let brand = res.data[i];
+                tableData += "<tr align=\"center\">\n" +
+                    "        <td>id</td>\n" +
+                    "        <td>" + brand.brandName + "</td>\n" +
+                    "        <td>" + brand.companyName + "</td>\n" +
+                    "        <td>" + brand.description + "</td>\n" +
+                    "        <td>" + brand.ordered + "</td>\n" +
+                    "        <td>" + brand.status + "</td>\n" +
+                    "        <td><a href='#'>修改</a></td>\n" +
+                    "    </tr>"
+            }
+            document.getElementById("brandTable").innerHTML = tableData;
         })
     }
 
+    document.getElementById("add").onclick=function (){
+        location.href="http://localhost/brand-axios-demo/addBrand.html"
+    }
 </script>
 </html>

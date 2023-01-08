@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="js/axios.min.js"></script>
+<body>
+<h3>添加品牌</h3>
+<form  method="post">
+    <input placeholder="品牌名称" id="brandName"   name="brandName"><br>
+    <input placeholder="公司名称" id="companyName" name="companyName"><br>
+    <input placeholder="排序" type="number" id="ordered" name="ordered"><br>
+    <textarea placeholder="介绍" id="description" name="description" ></textarea><br>
+    <input type="radio" name="status" value="1" checked>启用<br>
+    <input type="radio" name="status" value="0">禁用<br>
+
+
+</form>
+<button id="submit">提交</button>
+</body>
+<script lang="javascript">
+
+
+
+    document.getElementById("submit").onclick = function () {
+        //将表单数据转为JSON
+        let formData = {
+            brandName: document.getElementById("brandName").value,
+            companyName: document.getElementById("companyName").value,
+            ordered: document.getElementById("ordered").value,
+            description: document.getElementById("description").value,
+            status: "",
+        }
+        let status = document.getElementsByName("status");
+        for (let i = 0; i < status.length; i++) {
+            if(status[i].checked){
+                formData.status=status[i].value;
+            }
+        }
+        axios({
+            method: "post",
+            url: "http://localhost/brand-axios-demo/addServlet",
+            data: formData
+        }).then(res => {
+            //判断响应数据是否为success
+            if (res.data == "success") {
+                location.href = "http://localhost/brand-axios-demo/brand.html";
+            }
+        })
+    }
+</script>
+</html>

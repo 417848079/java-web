@@ -18,6 +18,16 @@ public class BrandService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
         List<Brand> brands = mapper.selectAll();
+        sqlSession.close();
         return brands;
+    }
+
+    public void add(Brand brand){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        mapper.add(brand);
+        sqlSession.commit();
+        sqlSession.close();
+
     }
 }
