@@ -16,7 +16,7 @@ public class Brand {
     private Integer ordered;
     private String description;
     private Integer status;
-    private String statusStr;
+//    private String statusStr;
 
 
 
@@ -71,7 +71,7 @@ public class Brand {
     }
 
     public String getStatusStr() {
-        if(this.getStatus()==1){
+        if(this.getStatus()!=null&&this.getStatus()==1){
             return "启用";
         }
         return "禁用";

@@ -30,4 +30,12 @@ public class BrandService {
         sqlSession.close();
 
     }
+
+    public void deleteById(int id){
+        SqlSession sqlSession = sqlSessionFactory.openSession();
+        BrandMapper mapper = sqlSession.getMapper(BrandMapper.class);
+        mapper. deleteById(id);
+        sqlSession.commit();
+
+    }
 }

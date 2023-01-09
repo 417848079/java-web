@@ -57,8 +57,10 @@
           <template slot-scope="scope">{{ scope.row.status===1?"启用":"禁用" }}</template>
         </el-table-column>
         <el-table-column label="操作" show-overflow-tooltip align="center">
+          <template slot-scope="scope">
           <el-button type="primary" size="mini">修改</el-button>
-          <el-button type="danger" size="mini">删除</el-button>
+          <el-button type="danger" size="mini"  @click="deleteById(scope.row.id)">删除</el-button>
+          </template>
         </el-table-column>
       </el-table>
 
@@ -78,7 +80,7 @@
         <el-form-item label="品牌名称" prop="brandName">
           <el-input size="mini" v-model="brandForm.brandName"></el-input>
         </el-form-item>
-        <el-form-item label="企业名称" prop="componyName">
+        <el-form-item label="企业名称" prop="companyName">
           <el-input size="mini" v-model="brandForm.companyName"></el-input>
         </el-form-item>
         <el-form-item label="描述" prop="description">
@@ -89,7 +91,7 @@
           </el-input-number>
         </el-form-item>
         <el-form-item label="状态" prop="status">
-          <el-switch size="mini" v-model="brandForm.value" active-color="#13ce66" inactive-color="#ff4949"
+          <el-switch size="mini" v-model="brandForm.status" active-color="#13ce66" inactive-color="#ff4949"
             active-value="1" inactive-value="0">
           </el-switch>
         </el-form-item>
@@ -126,13 +128,12 @@
         brand: {
           status: '',
           brandName: '',
-          componyName: ''
+          companyName: ''
         },
         dialogVisible: false,
         brandForm: {
-          id: '',
           brandName: '',
-          componyName: '',
+          companyName: '',
           ordered: 0,
           description: '',
           status: '',
@@ -141,7 +142,7 @@
           brandName: [
             { required: true, message: '请输入品牌名称', trigger: 'blur' }
           ],
-          componyName: [
+          companyName: [
             { required: true, message: '请输入企业名称', trigger: 'change' }
           ],
           description: [
@@ -152,14 +153,18 @@
 
     },
     mounted() {
-      axios({
-        method: "get",
-        url: path + "/selectAllServlet"
-      }).then(res => {
-        this.tableData = res.data
-      })
+      this.selectAll();
     },
     methods: {
+      // 查询所有
+      selectAll(){
+        axios({
+          method: "get",
+          url: path + "/selectAllServlet"
+        }).then(res => {
+          this.tableData = res.data
+        })
+      },
       //复选框选中
       handleSelectionChange(val) {
         console.log(val)
@@ -178,20 +183,40 @@
       },
 
       add() {
+        this.dialogVisible = true;
+      },
+
+      //删除
+      deleteById(id){
         axios({
           method: "post",
-          url: path + "/addServlet",
+          url: path + "/deleteByIdServlet?id="+id,
           data: this.brandForm
         }).then(res => {
-          this.tableData = res.data;
-          this.dialogVisible = true;
+          this.dialogVisible = false;
+          this.selectAll();
         })
 
       },
-
       //提交添加品牌
       addBrand() {
-        this.dialogVisible = false;
+        this.$refs["brandForm"].validate((valid) => {
+          if (valid) {
+            axios({
+              method: "post",
+              url: path + "/addServlet",
+              data: this.brandForm
+            }).then(res => {
+              this.dialogVisible = false;
+              this.selectAll();
+            })
+          } else {
+            return false;
+          }
+        });
+
+
+
       }
     }
   })
