@@ -16,6 +16,9 @@ public class Brand {
     private Integer ordered;
     private String description;
     private Integer status;
+    private String statusStr;
+
+
 
     public Integer getId() {
         return id;
@@ -61,17 +64,19 @@ public class Brand {
         return status;
     }
 
+
+
     public void setStatus(Integer status) {
         this.status = status;
     }
 
-    //逻辑视图
-    public String getStatusStr(){
+    public String getStatusStr() {
         if(this.getStatus()==1){
             return "启用";
         }
         return "禁用";
     }
+
 
     @Override
     public String toString() {

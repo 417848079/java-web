@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<script src="js/vue.js"></script>
+
+<body>
+  <div id="app">
+    <input v-model="inputData" placeholder="" placeholder-class="input-placeholder" @input="" />
+    {{inputData}}
+  </div>
+</body>
+<script lang="javascript">
+  new Vue({
+    el: "#app",
+    data() {
+      return {
+        inputData: ""
+      }
+    }
+  })
+</script>
+
+</html>
