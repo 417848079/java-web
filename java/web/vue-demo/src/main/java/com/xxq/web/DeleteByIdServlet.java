@@ -1,7 +1,5 @@
 package com.xxq.web;
 
-import com.xxq.service.BrandService;
-
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;

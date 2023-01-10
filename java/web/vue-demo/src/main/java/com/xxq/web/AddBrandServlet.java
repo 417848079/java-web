@@ -2,7 +2,6 @@ package com.xxq.web;
 
 import com.alibaba.fastjson.JSON;
 import com.xxq.pojo.Brand;
-import com.xxq.service.BrandService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
