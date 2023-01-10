@@ -22,7 +22,7 @@ public interface BrandMapper {
     List<Brand> selectAll();
 
 
-    @Insert("insert into tb_brand values (null,#{brandName},#{companyName},#{ordered},#{description},#{status})")
+    @Insert("insert into tb_brand values (null,#{brandName},#{companyName},#{ordered},#{description},#{status},null)")
     @ResultMap("brandResultMap")
     void add(Brand brand);
 
