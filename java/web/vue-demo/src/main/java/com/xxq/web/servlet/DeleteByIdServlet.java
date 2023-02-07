@@ -1,4 +1,7 @@
-package com.xxq.web;
+package com.xxq.web.servlet;
+
+import com.xxq.service.BrandService;
+import com.xxq.service.impl.BrandServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -7,11 +10,11 @@ import java.io.IOException;
 
 @WebServlet("/deleteByIdServlet")
 public class DeleteByIdServlet extends HttpServlet {
-    private BrandService brandService = new BrandService();
+    private BrandService brandService = new BrandServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        brandService.deleteById(Integer.parseInt(request.getParameter("id")));
+//        brandService.deleteById(Integer.parseInt(request.getParameter("id")));
         response.getWriter().write("ok");
     }
 

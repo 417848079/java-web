@@ -1,7 +1,9 @@
-package com.xxq.web;
+package com.xxq.web.servlet;
 
 import com.alibaba.fastjson.JSON;
 import com.xxq.pojo.Brand;
+import com.xxq.service.BrandService;
+import com.xxq.service.impl.BrandServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -12,7 +14,7 @@ import java.io.IOException;
 
 @WebServlet("/addServlet")
 public class AddBrandServlet extends HttpServlet {
-    private BrandService brandService = new BrandService();
+    private BrandService brandService = new BrandServiceImpl();
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,7 +30,7 @@ public class AddBrandServlet extends HttpServlet {
         System.out.println(brand);
 
         //3.调用service添加
-        brandService.add(brand);
+//        brandService.add(brand);
 
         //4.响应成功标识
         response.getWriter().write("success");
